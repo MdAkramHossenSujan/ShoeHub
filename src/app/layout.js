@@ -1,7 +1,5 @@
 import { Roboto } from 'next/font/google';
 import "./globals.css";
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
@@ -18,15 +16,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${roboto.className} antialiased min-h-screen`}
       >
-        <div>
-          <Navbar/>
-        </div>
        <main className='min-h-screen'>
          {children}
        </main>
-       <div>
-        <Footer/>
-       </div>
       </body>
     </html>
   );
