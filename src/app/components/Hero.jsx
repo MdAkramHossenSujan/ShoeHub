@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules"; // ✅ correct import
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -12,17 +12,17 @@ export default function Hero() {
     {
       img: "/pexels-goumbik-292999.jpg",
       title: "Step Into Style",
-      promo: "Discover the latest trends in sneakers",
+      promo: "Discover the latest sneaker trends and elevate your streetwear look with our curated collection of stylish and comfortable shoes.",
     },
     {
       img: "/pexels-pixabay-60619.jpg",
       title: "Run With Comfort",
-      promo: "Experience ultimate comfort with every step",
+      promo: "Experience unmatched comfort with every step. Our premium shoes combine innovative design with ergonomic support for your active lifestyle.",
     },
     {
       img: "/pexels-pluyar-786003.jpg",
       title: "Urban Vibes",
-      promo: "Make your street style stand out",
+      promo: "Make a statement with bold designs that fit your urban lifestyle. Shop the latest releases and set your style apart.",
     },
   ];
 
@@ -33,25 +33,30 @@ export default function Hero() {
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-[70vh]">
+            <div className="relative w-full h-[80vh]">
               <img
                 src={slide.img}
                 alt={slide.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 
-                bg-black/40">
-  <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-    {slide.title}
-  </h1>
-  <p className="text-lg md:text-2xl text-white mb-6">{slide.promo}</p>
-  <button className="btn btn-primary btn-lg">Explore</button>
-</div>
-
+              {/* Overlay with blur */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 md:px-20 
+                              bg-black/40">
+                <h1 className="text-3xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg">
+                  {slide.title}
+                </h1>
+                <p className="text-base text-white mb-6 max-w-3xl drop-shadow-md">
+                  {slide.promo}
+                </p>
+                <button className="btn btn-outline btn-lg rounded-2xl text-white border-white hover:bg-white hover:text-black transition-all">
+                  Explore
+                </button>
+              </div>
             </div>
           </SwiperSlide>
         ))}
@@ -59,3 +64,4 @@ export default function Hero() {
     </section>
   );
 }
+
