@@ -10,7 +10,31 @@ export const metadata = {
 export default function About() {
   return (
     <MainLayout>
-      <div>About</div>
+       <div className="max-w-4xl min-h-screen mx-auto p-6">
+        <h1 className="text-4xl font-bold mb-4  text-center">
+          About Us
+        </h1>
+        <h2 className="text-xl font-semibold mb-6  text-center">
+          Learn more about our mission and vision
+        </h2>
+        <p className=" mb-4 leading-relaxed">
+          Welcome to <strong>Urban Kicks</strong> – your number one source for 
+          premium footwear. We’re dedicated to giving you the very best of shoes, 
+          focusing on quality, comfort, and style.
+        </p>
+        <p className=" mb-4 leading-relaxed">
+          Founded in 2025, Urban Kicks has come a long way from its beginnings. 
+          When we first started out, our passion for high-quality and stylish shoes drove us to start this business.
+        </p>
+        <p className=" mb-4 leading-relaxed">
+          We believe in delivering value to our customers, and our team works 
+          tirelessly to provide the latest trends and timeless classics. Your satisfaction is our top priority.
+        </p>
+        <p className="leading-relaxed">
+          Thank you for choosing Urban Kicks! We hope you enjoy our products as 
+          much as we enjoy offering them to you.
+        </p>
+      </div>
     </MainLayout>
   )
 }
