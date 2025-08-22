@@ -1,6 +1,7 @@
 import { Roboto } from 'next/font/google';
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
+import NextAuthSessionProvider from '@/Provider/NextAuthProvider';
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
@@ -24,7 +25,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <body
+     <NextAuthSessionProvider>
+       <body
         className={`${roboto.className} antialiased min-h-screen`}
       >
        <main>
@@ -32,6 +34,7 @@ export default function RootLayout({ children }) {
          <Toaster position="top-center" reverseOrder={false} />
        </main>
       </body>
+     </NextAuthSessionProvider>
     </html>
   );
 }
