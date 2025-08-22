@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 👟 Shoe Management System
 
-## Getting Started
+A full-stack **Shoe Management System** built with **Next.js 15**, **NextAuth.js** for authentication, and a database for persistent storage.  
+The platform provides a simple interface to manage shoes, track details, and access a protected dashboard with analytics.
 
-First, run the development server:
+🔗 **Live Demo:** [UrbanKicks](https://urbankicks-puce.vercel.app/)
 
-```bash
+---
+
+## 🚀 Features
+
+- 🔑 Authentication with **NextAuth.js** (Login & Register)  
+- 👤 Protected Dashboard with role-based access  
+- 📊 Dashboard analytics using **Recharts**  
+- 📦 Shoe product management (add, view, details)  
+- 🎨 Styled with **Tailwind CSS + DaisyUI**  
+- 🌐 Responsive & modern UI  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js 15, React 19, Tailwind CSS, DaisyUI  
+- **Authentication:** NextAuth.js  
+- **Forms:** React Hook Form  
+- **Charts:** Recharts  
+- **UI Enhancements:** React Icons, React Hot Toast, Swiper.js  
+- **HTTP Requests:** Axios  
+
+---
+
+## ⚡ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+git clone https://github.com/your-username/shoe-management-system.git
+cd shoe-management-system
+
+## Secrets In Env File:
+NEXTAUTH_SECRET=your_secret_key
+NEXTAUTH_URL=http://localhost:3000
+
+DATABASE_URL=your_database_connection_string
+
+NEXTAUTH_SECRET=your_secret_key
+NEXTAUTH_URL=http://localhost:3000
+
+
+Development for Local And Install Process
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+npm run build
+npm start
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Routing In This Project**
+src/
+ ├── app/
+ │   ├── (authpage)/
+ │   │   ├── login/
+ │   │   └── register/
+ │   ├── about/
+ │   ├── contact/
+ │   ├── products/
+ │   ├── dashboard/   # Protected
+ │   │   ├── home/
+ │   │   ├── profile/
+ │   │   ├── product/
+ │   │   └── add-product/
+ │   ├── layout.js
+ │   └── page.js
+ ├── middleware.js    # Protects dashboard routes
+ ├── provider.js      # NextAuth provider
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm install next-auth
+## Used NextAuth for Next.js Authentication
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## *Future Improvements*
+Role-Based Access Control: Separate roles for Admin, Manager, and User.
+Inventory & Stock Management: Track product quantities and low-stock alerts.
+Order & Customer Management: Add order placement, history, and customer management.
+Search & Filter: Advanced search and filtering by size, price, and availability.
+Mobile App Integration: Extend functionality to a React Native app.
+Analytics Dashboard: Detailed charts and reports for sales and user activity.
+Email Notifications: Send confirmation emails for registration and order updates.
+Performance Optimization: Implement caching and optimize database queries.
+Dark/Light Mode Preferences: Save and sync user preferences across sessions.
