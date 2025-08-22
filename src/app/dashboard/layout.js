@@ -9,6 +9,7 @@ import {
   FiHome,
   FiBell,
   FiSettings,
+  FiPackage,
 } from "react-icons/fi";
 import ThemeToggle from "../components/ThemeToggle";
 
@@ -42,6 +43,12 @@ export default function DashboardLayout({ children }) {
             className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             <FiPlusSquare size={20} /> <span>Add Product</span>
+          </Link>
+          <Link
+            href="/dashboard/products"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            <FiPackage size={20} /> <span>Products</span>
           </Link>
           <Link
             href="/dashboard/profile"

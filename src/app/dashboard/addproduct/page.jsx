@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { GiRunningShoe } from "react-icons/gi";
 
 export default function AddShoe() {
+  const [imageUrl, setImageURL] = useState()
+  const [uploading, setUploading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -12,11 +16,48 @@ export default function AddShoe() {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    try {
+      const res = await axios.post("http://localhost:5000/shoes", {
+        ...data,
+        image: imageUrl,
+      });
+
+      toast.success("Shoe added successfully!");
+      reset();
+      setImageURL('')
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to add shoe!");
+    }
     reset();
   };
-
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    try {
+      setUploading(true);
+      const res = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_KEY}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // important
+          },
+        }
+      );
+      setImageURL(res.data.data.url);
+      console.log(imageUrl)
+      toast.success('Image Uploaded')
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setUploading(false);
+    }
+  };
   return (
     <div className="max-w-3xl mx-auto p-6 mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors">
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">
@@ -169,10 +210,15 @@ export default function AddShoe() {
             type="file"
             accept="image/*"
             {...register("image")}
+            onChange={handleImageUpload}
             className="input p-2 w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
           />
         </div>
-
+        {
+          imageUrl && <div className="flex justify-center">
+          <img className="border rounded-2xl border-gray-400 h-60 object-cover" src={imageUrl} alt="" />
+        </div>
+        }
         {/* Submit Button */}
         <div className="text-center mt-4">
           <button
