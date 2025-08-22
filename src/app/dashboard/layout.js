@@ -26,7 +26,7 @@ export default function DashboardLayout({ children }) {
         {/* Logo */}
         <Link href="/">
           <div className="p-5 text-2xl font-extrabold text-blue-600 dark:text-blue-400 border-b dark:border-gray-700">
-            Urban<span className="text-gray-800 dark:text-gray-200">Play</span>
+            Urban<span className="text-gray-800 dark:text-gray-200">Kicks</span>
           </div>
         </Link>
 
