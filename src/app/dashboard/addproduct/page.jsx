@@ -19,7 +19,7 @@ export default function AddShoe() {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const res = await axios.post("http://localhost:5000/shoes", {
+      const res = await axios.post("https://shoe-hub-server.vercel.app/shoes", {
         ...data,
         image: imageUrl,
       });

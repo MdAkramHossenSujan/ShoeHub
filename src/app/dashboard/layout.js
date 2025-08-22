@@ -20,7 +20,7 @@ export default function DashboardLayout({ children }) {
     <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 shadow-md transform transition-transform duration-300 z-50 
+        className={`fixed top-0 left-0  h-screen w-64 bg-white dark:bg-gray-800 shadow-md transform transition-transform duration-300 z-50 
         ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       >
         {/* Logo */}
@@ -76,7 +76,7 @@ export default function DashboardLayout({ children }) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Top Navbar */}
-        <header className="flex items-center justify-between bg-white dark:bg-gray-800 shadow px-4 py-3">
+        <header className="flex items-center justify-between bg-white dark:bg-gray-900 shadow px-4 py-3">
           {/* Left: Mobile toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -106,8 +106,8 @@ export default function DashboardLayout({ children }) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6 bg-gray-50 dark:bg-gray-900 transition-colors">
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6 transition-colors">
+        <main className="flex-1 transition-colors">
+          <div className="bg-white dark:bg-gray-900 shadow rounded-lg p-6 transition-colors">
             {children}
           </div>
         </main>

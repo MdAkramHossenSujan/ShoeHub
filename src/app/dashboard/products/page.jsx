@@ -11,7 +11,7 @@ export default function Products() {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/display/shoes");
+      const res = await axios.get("https://shoe-hub-server.vercel.app/display/shoes");
       setProducts(res.data.data);
     } catch (err) {
       console.error(err);
@@ -33,7 +33,7 @@ export default function Products() {
     );
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="max-w-7xl min-h-screen mx-auto p-6">
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">
         Products
       </h2>
@@ -45,7 +45,7 @@ export default function Products() {
       ) : (
         <div className="overflow-x-auto">
           <table className="table w-full border border-gray-300 dark:border-gray-700 rounded-lg shadow-md">
-            <thead className="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+            <thead className="bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
               <tr>
                 <th className="p-3">#</th>
                 <th className="p-3">Name</th>
@@ -59,7 +59,7 @@ export default function Products() {
               {products.map((product, index) => (
                 <tr
                   key={product._id}
-                  className="bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                  className="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                 >
                   <td className="border border-gray-200 dark:border-gray-600 p-3 text-center font-medium">
                     {index + 1}
