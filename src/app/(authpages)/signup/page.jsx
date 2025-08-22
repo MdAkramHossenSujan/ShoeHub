@@ -55,7 +55,7 @@ export default function SignUp() {
     console.log("User Data:", userData);
 
     try {
-      const res = await axios.post("http://localhost:5000/users", userData);
+      const res = await axios.post("https://shoe-hub-server.vercel.app/users", userData);
       if (res.status === 201) {
         toast.success("Account created successfully 🎉");
         
@@ -65,7 +65,7 @@ export default function SignUp() {
     }
     reset()
     setImageURL('')
-    router.push('/')
+    router.push('/login')
   };
 
   return (
