@@ -29,9 +29,7 @@ export default function Products() {
 
   if (loading)
     return (
-      <p className="text-center mt-8 text-lg font-medium text-gray-700 dark:text-gray-300">
-        Loading products...
-      </p>
+      <p className="text-center flex justify-center items-center min-h-screen text-lg"><span class="loading loading-ring loading-xl"></span>.</p>
     );
 
   if (products.length === 0)

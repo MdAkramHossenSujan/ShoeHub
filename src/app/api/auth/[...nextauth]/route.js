@@ -1,44 +1,68 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-const authOptions={
-  providers: [
-  CredentialsProvider({
-    // The name to display on the sign in form (e.g. 'Sign in with...')
-    name: 'Credentials',
-    // The credentials is used to generate a suitable form on the sign in page.
-    // You can specify whatever fields you are expecting to be submitted.
-    // e.g. domain, username, password, 2FA token, etc.
-    // You can pass any HTML attribute to the <input> tag through the object.
-    credentials: {
-      username: { label: "Username", type: "text", placeholder: "jsmith" },
-      password: { label: "Password", type: "password" },
-      email:{label:'Email',type:'email'}
-    },
-    async authorize(credentials, req) {
-        console.log(credentials)
-      // You need to provide your own logic here that takes the credentials
-      // submitted and returns either a object representing a user or value
-      // that is false/null if the credentials are invalid.
-       const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
-      // You can also use the `req` object to obtain additional parameters
-      // (i.e., the request IP address)
-    //   const res = await fetch("http://localhost:3000/login", {
-    //     method: 'POST',
-    //     body: JSON.stringify(credentials),
-    //     headers: { "Content-Type": "application/json" }
-    //   })
-    //   const user = await res.json()
-console.log(user)
-      // If no error and we have user data, return it
-      if ( user) {
-        return user
-      }
-      // Return null if user data could not be retrieved
-      return null
-    }
-  })
-]
-}
-const handler = NextAuth(authOptions)
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-export { handler as GET, handler as POST }
+export const authOptions = {
+    providers: [
+        CredentialsProvider({
+            name: "Credentials",
+            credentials: {
+                email: { label: "Email", type: "email", placeholder: "you@example.com" },
+                password: { label: "Password", type: "password" },
+            },
+            async authorize(credentials) {
+                const { email, password } = credentials;
+                console.log(credentials)
+                try {
+                    // Fetch user from backend by email
+                    const res = await fetch(`http://localhost:5000/users/${email}`);
+                    const data = await res.json();
+
+                    if (!res.ok || !data.success || data.data.length === 0) {
+                        console.error("User not found or error:", data.message);
+                        return null;
+                    }
+
+                    const user = data.data; // Assuming data.data is an array
+                    console.log(user)
+                    // Check password
+                    if (user.password === password) {
+                        // Password matches, return user object
+                        return {
+                            id: user._id,
+                            name: user.name,
+                            email: user.email,
+                            image: user.image,
+                        };
+                    } else {
+                        console.error("Invalid password");
+                        return null; // Password mismatch
+                    }
+                } catch (err) {
+                    console.error("Error fetching user:", err);
+                    return null;
+                }
+            },
+        }),
+    ],
+   callbacks: {
+    async session({ session, user, token }) {
+        if(token){
+            session.user.username=token.username
+        }
+      return session
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+        if(user){
+            token.username=user.username
+        }
+      return token
+    },
+    pages: {
+        signIn: "/login", // custom login page
+        error: "/login",  // redirect to login on error
+    },
+}};
+
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };

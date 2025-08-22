@@ -1,3 +1,4 @@
+
 import Hero from "./components/Hero";
 import MainLayout from "./components/MainLayout";
 import Products from "./components/Products";

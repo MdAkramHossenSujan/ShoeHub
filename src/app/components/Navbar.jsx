@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import ThemeToggle from "./ThemeToggle";
+import { useSession } from "next-auth/react";
+import UserProfile from "./UserProfile";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+ const { data: session } = useSession();
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -42,17 +44,20 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-
         {/* Right - Theme + Auth */}
-        <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
-          <Link href="/login" className="btn btn-sm rounded-xl btn-outline">
-            Login
-          </Link>
-          <Link href="/signup" className="btn btn-sm rounded-xl btn-primary">
-            Signup
-          </Link>
-        </div>
+  <div className="hidden md:flex items-center gap-4">
+    <ThemeToggle />
+    {session ? <UserProfile session={session}/> : ( <div className="flex gap-4">
+    <Link href="/login" className="btn btn-sm rounded-xl btn-outline">
+      Login
+    </Link>
+    <Link href="/signup" className="btn btn-sm rounded-xl btn-primary">
+      Signup
+    </Link>
+    </div>)}
+  </div>
+
+
 
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center gap-4">

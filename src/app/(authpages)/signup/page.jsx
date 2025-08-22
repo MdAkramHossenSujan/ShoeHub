@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
+  const router=useRouter()
   const {
     register,
     handleSubmit,
@@ -63,6 +65,7 @@ export default function SignUp() {
     }
     reset()
     setImageURL('')
+    router.push('/')
   };
 
   return (

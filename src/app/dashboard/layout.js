@@ -56,12 +56,6 @@ export default function DashboardLayout({ children }) {
           >
             <FiUser size={20} /> <span>Profile</span>
           </Link>
-          <Link
-            href="/dashboard/settings"
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
-          >
-            <FiSettings size={20} /> <span>Settings</span>
-          </Link>
         </nav>
       </aside>
 
