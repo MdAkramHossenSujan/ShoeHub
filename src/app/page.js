@@ -1,20 +1,12 @@
-import Image from "next/image";
 import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import MainLayout from "./components/MainLayout";
 
 export default function Home() {
   return (
-    <div>
+    <MainLayout>
       <div>
-        <Navbar/>
+        <Hero/>
       </div>
-    <div>
-      <Hero/>
-    </div>
-    <div>
-      <Footer/>
-    </div>
-    </div>
+    </MainLayout>
   );
 }
