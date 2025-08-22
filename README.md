@@ -60,15 +60,15 @@ src/
  │   ├── about/
  │   ├── contact/
  │   ├── products/
- │   ├── dashboard/   # Protected
+ │   ├── dashboard/ 
  │   │   ├── home/
  │   │   ├── profile/
  │   │   ├── product/
  │   │   └── add-product/
  │   ├── layout.js
  │   └── page.js
- ├── middleware.js    # Protects dashboard routes
- ├── provider.js      # NextAuth provider
+ ├── middleware.js   
+ ├── provider.js     
 
 
 npm install next-auth
