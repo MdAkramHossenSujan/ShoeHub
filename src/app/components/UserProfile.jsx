@@ -18,7 +18,7 @@ export default function UserProfile({ session }) {
       <img
         src={session.user.image || "/default-avatar.png"}
         alt={session.user.name || "User"}
-        className="lg:w-10 lg:h-10 w-24 h-24 rounded-full mask mask-squircle object-cover cursor-pointer"
+        className="md:w-10 md:h-10 w-24 h-24 rounded-full mask mask-squircle object-cover cursor-pointer"
         onClick={() => setIsOpen(true)}
       />
 
@@ -32,7 +32,7 @@ export default function UserProfile({ session }) {
             checked={isOpen}
             readOnly
           />
-          <div className="modal modal-bottom sm:modal-middle">
+          <div className="modal modal-middle">
             <div className="modal-box relative">
               <label
                 htmlFor="user-profile-modal"
