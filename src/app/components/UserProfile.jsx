@@ -18,7 +18,7 @@ export default function UserProfile({ session }) {
       <img
         src={session.user.image || "/default-avatar.png"}
         alt={session.user.name || "User"}
-        className="w-10 h-10 rounded-full mask mask-squircle object-cover cursor-pointer"
+        className="lg:w-10 lg:h-10 w-24 h-24 rounded-full mask mask-squircle object-cover cursor-pointer"
         onClick={() => setIsOpen(true)}
       />
 

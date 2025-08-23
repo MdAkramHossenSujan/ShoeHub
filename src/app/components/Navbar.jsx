@@ -89,7 +89,12 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <div className="mt-auto flex flex-col gap-2">
+            {
+              session ?
+              <div className="mt-auto mx-auto">
+                <UserProfile session={session}/>
+              </div> :
+              <div className="mt-auto flex flex-col gap-2">
               <Link
                 href="/login"
                 className="btn btn-sm rounded-xl btn-outline w-full"
@@ -105,6 +110,7 @@ export default function Navbar() {
                 Signup
               </Link>
             </div>
+            }
           </div>
         </>
       )}
