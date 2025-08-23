@@ -40,8 +40,8 @@ export default function Products() {
     );
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center ">
+    <div className="max-w-7xl p-6 py-16 mx-auto">
+      <h2 className="text-3xl font-bold mb-6  text-center ">
         Products
       </h2>
 

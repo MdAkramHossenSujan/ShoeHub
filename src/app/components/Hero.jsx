@@ -27,7 +27,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative w-full h-[90vh]">
+    <section className="relative w-full h-[80vh]">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         spaceBetween={0}
