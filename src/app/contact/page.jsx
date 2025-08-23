@@ -22,7 +22,7 @@ export default function Contact() {
 
   return (
     <MainLayout>
-      <div className="min-h-screen py-18 px-6">
+      <div className="min-h-screen py-24 px-6">
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
