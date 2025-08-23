@@ -52,24 +52,24 @@ npm run build
 npm start
 
 **Routing In This Project**
+   
 src/
- ├── app/
- │   ├── (authpage)/
- │   │   ├── login/
- │   │   └── register/
- │   ├── about/
- │   ├── contact/
- │   ├── products/
- │   ├── dashboard/   # Protected
- │   │   ├── home/
- │   │   ├── profile/
- │   │   ├── product/
- │   │   └── add-product/
- │   ├── layout.js
- │   └── page.js
- ├── middleware.js    # Protects dashboard routes
- ├── provider.js      # NextAuth provider
-
+├── app/
+│ ├── (authpage)/
+│ │ ├── login/
+│ │ └── register/
+│ ├── about/
+│ ├── contact/
+│ ├── products/
+│ ├── dashboard/
+│ │ ├── home/
+│ │ ├── profile/
+│ │ ├── product/
+│ │ └── add-product/
+│ ├── layout.js
+│ └── page.js
+├── middleware.js
+├── provider.js
 
 npm install next-auth
 ## Used NextAuth for Next.js Authentication
